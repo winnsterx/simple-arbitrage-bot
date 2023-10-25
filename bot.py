@@ -216,8 +216,7 @@ def test_arbitrage_check(bot):
     arbs = bot.check_for_arbitrage(0)
     assert len(arbs) == 3
     for a in arbs:
-        assert a["profit (ETH)"] - 0.5 == 0
-    print("success: basic arbitrage testing")
+        assert abs(a["profit (ETH)"] - 0.0005) < 0.000001  # nearly equal
 
 
 if __name__ == "__main__":
@@ -253,7 +252,7 @@ if __name__ == "__main__":
     }
 
     bot = Arbitrageur(ERC20_ABI, dexes, eth_trade_amount, profit_threshold)
-    # test_arbitrage_check(bot)
+    test_arbitrage_check(bot)
 
     try:
         start_time = datetime.datetime.now()
@@ -267,13 +266,6 @@ if __name__ == "__main__":
                 # if current > last: block has elapsed and we query new data
                 # if no last block number, we start afresh and query new data
                 bot.gather_data()
-
-                # bot.reserves = {
-                #     "uniswap": {"dai": 100 * WEI_PER_ETH, "eth": 1 * WEI_PER_ETH},
-                #     "sushiswap": {"dai": 50 * WEI_PER_ETH, "eth": 3 * WEI_PER_ETH},
-                #     "shebaswap": {"dai": 100 * WEI_PER_ETH, "eth": 1 * WEI_PER_ETH},
-                #     "croswap": {"dai": 100 * WEI_PER_ETH, "eth": 1 * WEI_PER_ETH},
-                # }
 
                 bot.calculate_prices_from_data()
                 arb_opps = bot.check_for_arbitrage(current_block_number)
