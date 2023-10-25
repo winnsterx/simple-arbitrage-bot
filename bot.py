@@ -218,6 +218,8 @@ def test_arbitrage_check(bot):
     for a in arbs:
         assert abs(a["profit (ETH)"] - 0.0005) < 0.000001  # nearly equal
 
+    print("Simple sanity test: passes! Now, entering into the real world. ")
+
 
 if __name__ == "__main__":
     print("Initializing arbitrageur...")
@@ -252,6 +254,7 @@ if __name__ == "__main__":
     }
 
     bot = Arbitrageur(ERC20_ABI, dexes, eth_trade_amount, profit_threshold)
+    print("Simple sanity test: running...")
     test_arbitrage_check(bot)
 
     try:
