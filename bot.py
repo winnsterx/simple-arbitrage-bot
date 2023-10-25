@@ -3,7 +3,7 @@ import datetime
 import json
 import secret_keys
 import argparse
-from decimal import Decimal
+
 
 WEI_PER_ETH = 1000000000000000000
 
@@ -301,8 +301,8 @@ if __name__ == "__main__":
         print("Program ends. Dumped all profitable arbitrages into arbitrage.json")
 
 
-# # additional things to implement
-# #   * adding post-cost profit check (will there be positive profit after the execution)?
-# #   * adding complex
-# #   * adding concurrency support (rn since we r only dealing w 4 dexes, doenst seem necessary)
-# #   * improve arbitrage algorithm, rn O(n^2)
+# additional things to implement
+#   * adding post-cost profit check (will there be positive profit after the execution)?
+#   * adding complex
+#   * adding concurrency support (rn since we r only dealing w 4 dexes, doenst seem necessary)
+#   * improve arbitrage algorithm, rn O(n^2)

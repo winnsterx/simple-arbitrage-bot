@@ -17,5 +17,5 @@ python3 bot.py
 python3 bot.py --eth_trade_amount=0.0005 --profit_threshold=0.1234
 ```
 
-To stop the bot, do ctrl-c. The profitable arbitrages can be found in `arbitrages.json`
+To stop the bot, do ctrl-c. All the profitable arbitrages can be found in `arbitrages.json`
 
